@@ -41,6 +41,7 @@ export function DishesPage(): JSX.Element {
               {data.ingredients.map((i) => <option key={i.id} value={i.id}>{i.name}</option>)}
             </select>
             <input type="number" min={0} step="0.01" value={item.amount} onChange={(e) => setForm({ ...form, ingredients: form.ingredients.map((v, i) => i === idx ? { ...v, amount: Number(e.target.value) } : v) })} />
+            <small>{ingMap.get(item.ingredientId)?.unit ?? ''}</small>
             <button type="button" className="danger" onClick={() => setForm({ ...form, ingredients: form.ingredients.filter((_, i) => i !== idx) })}>移除</button>
           </div>
         ))}
@@ -53,7 +54,10 @@ export function DishesPage(): JSX.Element {
             <li key={item.id}>
               <div>
                 <strong>{item.name}</strong>
-                <small>{item.category || '未分类'} · {item.ingredients.map((it) => `${ingMap.get(it.ingredientId)?.name ?? '未知'}×${it.amount}`).join('，')}</small>
+                <small>{item.category || '未分类'} · {item.ingredients.map((it) => {
+                  const ing = ingMap.get(it.ingredientId);
+                  return `${ing?.name ?? '未知'}×${it.amount}${ing?.unit ? ing.unit : ''}`;
+                }).join('，')}</small>
               </div>
               <div className="row">
                 <button className="ghost" onClick={() => { setEditing(item); setForm({ name: item.name, category: item.category ?? '', note: item.note ?? '', ingredients: item.ingredients }); }}>编辑</button>

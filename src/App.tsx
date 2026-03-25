@@ -7,6 +7,7 @@ import { MenusPage } from './pages/MenusPage';
 import { ProjectEditorPage } from './pages/ProjectEditorPage';
 import { ProjectsPage } from './pages/ProjectsPage';
 import { ProjectSummaryPage } from './pages/ProjectSummaryPage';
+import { UsagePage } from './pages/UsagePage';
 
 export default function App(): JSX.Element {
   return (
@@ -20,6 +21,7 @@ export default function App(): JSX.Element {
         <Route path="/projects/new" element={<ProjectEditorPage />} />
         <Route path="/projects/:id/edit" element={<ProjectEditorPage />} />
         <Route path="/projects/:id/summary" element={<ProjectSummaryPage />} />
+        <Route path="/usage" element={<UsagePage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Route>
     </Routes>
