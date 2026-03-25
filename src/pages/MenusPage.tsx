@@ -31,15 +31,17 @@ export function MenusPage(): JSX.Element {
           if (data.dishes.length === 0) return window.alert('请先创建菜品');
           setForm({ ...form, dishes: [...form.dishes, { dishId: data.dishes[0].id, count: 1 }] });
         }}>+ 添加菜品</button></div>
-        {form.dishes.map((item, idx) => (
-          <div className="row" key={idx}>
-            <select value={item.dishId} onChange={(e) => setForm({ ...form, dishes: form.dishes.map((v, i) => i === idx ? { ...v, dishId: e.target.value } : v) })}>
-              {data.dishes.map((d) => <option key={d.id} value={d.id}>{d.name}</option>)}
-            </select>
-            <input type="number" min={1} value={item.count} onChange={(e) => setForm({ ...form, dishes: form.dishes.map((v, i) => i === idx ? { ...v, count: Number(e.target.value) } : v) })} />
-            <button type="button" className="danger" onClick={() => setForm({ ...form, dishes: form.dishes.filter((_, i) => i !== idx) })}>移除</button>
-          </div>
-        ))}
+        <div className="form-list">
+          {form.dishes.map((item, idx) => (
+            <div className="row" key={idx}>
+              <select value={item.dishId} onChange={(e) => setForm({ ...form, dishes: form.dishes.map((v, i) => i === idx ? { ...v, dishId: e.target.value } : v) })}>
+                {data.dishes.map((d) => <option key={d.id} value={d.id}>{d.name}</option>)}
+              </select>
+              <input type="number" min={1} value={item.count} onChange={(e) => setForm({ ...form, dishes: form.dishes.map((v, i) => i === idx ? { ...v, count: Number(e.target.value) } : v) })} />
+              <button type="button" className="danger" onClick={() => setForm({ ...form, dishes: form.dishes.filter((_, i) => i !== idx) })}>移除</button>
+            </div>
+          ))}
+        </div>
         <button type="submit">{editing ? '保存修改' : '新增菜单'}</button>
       </form>
 
