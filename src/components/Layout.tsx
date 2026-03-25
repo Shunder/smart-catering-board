@@ -6,7 +6,8 @@ const navs = [
   ['/ingredients', '用料管理'],
   ['/dishes', '菜品管理'],
   ['/menus', '菜单管理'],
-  ['/projects', '项目管理']
+  ['/projects', '项目管理'],
+  ['/usage', '使用说明']
 ] as const;
 
 export function Layout(): JSX.Element {
@@ -20,7 +21,13 @@ export function Layout(): JSX.Element {
         <p className="muted">smart-catering-board</p>
         <nav>
           {navs.map(([path, name]) => (
-            <Link key={path} to={path} className={location.pathname === path ? 'active' : ''}>
+            <Link
+              key={path}
+              to={path}
+              className={location.pathname === path ? 'active' : ''}
+              target={path === '/usage' ? '_blank' : undefined}
+              rel={path === '/usage' ? 'noopener noreferrer' : undefined}
+            >
               {name}
             </Link>
           ))}
