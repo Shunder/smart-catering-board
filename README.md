@@ -17,6 +17,7 @@
 ## 2. 在线使用方式
 部署到 GitHub Pages 后即可在线访问：
 - 示例地址：`https://<你的GitHub用户名>.github.io/smart-catering-board/`
+- 说明页直达链接示例：`https://<你的GitHub用户名>.github.io/smart-catering-board/#/usage`（静态托管建议使用 `#/` 路由，避免 404）
 
 ## 3. 本地启动（适合第一次体验）
 1. 安装 Node.js（建议 20+）
