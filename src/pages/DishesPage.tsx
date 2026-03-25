@@ -35,16 +35,18 @@ export function DishesPage(): JSX.Element {
         <Field label="备注"><input value={form.note} onChange={(e) => setForm({ ...form, note: e.target.value })} /></Field>
 
         <div className="subhead row"><b>用料清单</b><button type="button" className="ghost" onClick={addIng}>+ 添加用料</button></div>
-        {form.ingredients.map((item, idx) => (
-          <div className="row" key={idx}>
-            <select value={item.ingredientId} onChange={(e) => setForm({ ...form, ingredients: form.ingredients.map((v, i) => i === idx ? { ...v, ingredientId: e.target.value } : v) })}>
-              {data.ingredients.map((i) => <option key={i.id} value={i.id}>{i.name}</option>)}
-            </select>
-            <input type="number" min={0} step="0.01" value={item.amount} onChange={(e) => setForm({ ...form, ingredients: form.ingredients.map((v, i) => i === idx ? { ...v, amount: Number(e.target.value) } : v) })} />
-            <small>{ingMap.get(item.ingredientId)?.unit ?? ''}</small>
-            <button type="button" className="danger" onClick={() => setForm({ ...form, ingredients: form.ingredients.filter((_, i) => i !== idx) })}>移除</button>
-          </div>
-        ))}
+        <div className="form-list">
+          {form.ingredients.map((item, idx) => (
+            <div className="row" key={idx}>
+              <select value={item.ingredientId} onChange={(e) => setForm({ ...form, ingredients: form.ingredients.map((v, i) => i === idx ? { ...v, ingredientId: e.target.value } : v) })}>
+                {data.ingredients.map((i) => <option key={i.id} value={i.id}>{i.name}</option>)}
+              </select>
+              <input type="number" min={0} step="0.01" value={item.amount} onChange={(e) => setForm({ ...form, ingredients: form.ingredients.map((v, i) => i === idx ? { ...v, amount: Number(e.target.value) } : v) })} />
+              <small>{ingMap.get(item.ingredientId)?.unit ?? ''}</small>
+              <button type="button" className="danger" onClick={() => setForm({ ...form, ingredients: form.ingredients.filter((_, i) => i !== idx) })}>移除</button>
+            </div>
+          ))}
+        </div>
         <div className="row"><button type="submit">{editing ? '保存修改' : '新增菜品'}</button></div>
       </form>
 
