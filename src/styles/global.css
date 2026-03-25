@@ -11,7 +11,15 @@ nav a.active { background: #2563eb; }
 .panel, .card, .list li { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 12px; }
 .panel { margin-bottom: 12px; }
 .panel > button,
-.panel > .upload-btn { display: block; width: 100%; }
+.panel > .upload-btn {
+  display: flex;
+  width: 100%;
+  min-height: 36px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 14px;
+}
 .panel > button { margin-bottom: 8px; }
 .grid { display: grid; gap: 12px; }
 .grid.four { grid-template-columns: repeat(4, 1fr); }
@@ -21,6 +29,7 @@ nav a.active { background: #2563eb; }
 .list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
 .list li { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
 .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.form-list { display: grid; gap: 8px; margin-bottom: 8px; }
 .between { justify-content: space-between; }
 .field { display: grid; gap: 6px; margin-bottom: 8px; }
 input, select, button { padding: 8px 10px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 14px; }
@@ -32,7 +41,7 @@ button.danger { background: #dc2626; }
 .report table { width: 100%; border-collapse: collapse; margin-bottom: 14px; }
 .report th, .report td { border: 1px solid #e5e7eb; padding: 8px; text-align: left; }
 .subhead { margin: 10px 0 6px; font-weight: 600; }
-.upload-btn { display: inline-block; padding: 8px 10px; background: #059669; border-radius: 8px; cursor: pointer; }
+.upload-btn { padding: 8px 10px; background: #059669; border-radius: 8px; cursor: pointer; color: #fff; }
 .upload-btn input { display: none; }
 @media (max-width: 900px) {
   .app-shell { grid-template-columns: 1fr; }
