@@ -55,15 +55,19 @@ export function Layout(): JSX.Element {
             />
           </label>
         </div>
-        <div className="panel stats-panel">
-          <h3>站点访问统计</h3>
-          <p>
-            本站访客数：<b>{loading ? '加载中...' : visitors ?? '--'}</b>
-          </p>
-          <p>
-            本站总访问量：<b>{loading ? '加载中...' : visits ?? '--'}</b>
-          </p>
-          <small>（基于 GitHub Pages + CountAPI，无需后端）</small>
+        <div className="panel stats-panel" id="busuanzi_container_site_pv">
+          <div className="stats-panel-head">
+            <h3>站点访问统计</h3>
+            <span className="stats-dot" aria-hidden="true" />
+          </div>
+          <div className="stats-metric" id="busuanzi_container_site_uv">
+            <span>累计访客</span>
+            <b id="busuanzi_value_site_uv">{loading ? '加载中...' : visitors ?? '--'}</b>
+          </div>
+          <div className="stats-metric">
+            <span>累计访问量</span>
+            <b id="busuanzi_value_site_pv">{loading ? '加载中...' : visits ?? '--'}</b>
+          </div>
         </div>
         <p className="hint">{message}</p>
       </aside>
