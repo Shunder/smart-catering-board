@@ -1,5 +1,6 @@
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { useAppData } from '../state/AppDataContext';
+import { useSiteCounters } from '../lib/visitorStats';
 
 const navs = [
   ['/', '首页'],
@@ -13,6 +14,7 @@ const navs = [
 export function Layout(): JSX.Element {
   const location = useLocation();
   const { message, backup, restore } = useAppData();
+  const { visitors, visits, loading } = useSiteCounters();
 
   return (
     <div className="app-shell">
@@ -52,6 +54,16 @@ export function Layout(): JSX.Element {
               }}
             />
           </label>
+        </div>
+        <div className="panel stats-panel">
+          <h3>站点访问统计</h3>
+          <p>
+            本站访客数：<b>{loading ? '加载中...' : visitors ?? '--'}</b>
+          </p>
+          <p>
+            本站总访问量：<b>{loading ? '加载中...' : visits ?? '--'}</b>
+          </p>
+          <small>（基于 GitHub Pages + CountAPI，无需后端）</small>
         </div>
         <p className="hint">{message}</p>
       </aside>
