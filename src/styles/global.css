@@ -46,6 +46,7 @@ button.danger { background: #dc2626; }
 @media (max-width: 900px) {
   .app-shell { grid-template-columns: 1fr; }
   .grid.four, .grid.two { grid-template-columns: 1fr; }
+  .stats-metric b { font-size: 18px; }
 }
 
 .stats-panel {
@@ -79,6 +80,7 @@ button.danger { background: #dc2626; }
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 10px;
   margin-top: 8px;
   padding: 8px 10px;
   border: 1px solid rgba(148, 163, 184, 0.22);
@@ -93,4 +95,7 @@ button.danger { background: #dc2626; }
   color: #f8fafc;
   font-size: 20px;
   font-variant-numeric: tabular-nums;
+  margin-left: auto;
+  text-align: right;
+  overflow-wrap: anywhere;
 }
