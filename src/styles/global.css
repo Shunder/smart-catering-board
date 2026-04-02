@@ -47,3 +47,30 @@ button.danger { background: #dc2626; }
   .app-shell { grid-template-columns: 1fr; }
   .grid.four, .grid.two { grid-template-columns: 1fr; }
 }
+
+.stats-panel {
+  background: linear-gradient(160deg, #0f172a 0%, #1d4ed8 100%);
+  color: #e2e8f0;
+  border: 1px solid rgba(147, 197, 253, 0.35);
+}
+.stats-panel h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+  color: #dbeafe;
+}
+.stats-panel p {
+  margin: 6px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+}
+.stats-panel b {
+  color: #f8fafc;
+  font-size: 18px;
+}
+.stats-panel small {
+  display: block;
+  margin-top: 8px;
+  color: #bfdbfe;
+}
